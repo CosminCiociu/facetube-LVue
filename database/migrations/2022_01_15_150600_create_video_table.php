@@ -16,7 +16,9 @@ class CreateVideoTable extends Migration
         Schema::create('video', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('url');
+            $table->string('imageUrl');
+            $table->string('videoUrl');
+            $table->string('duration');
             // $table->integer('likes')
             $table->timestamps();
         });

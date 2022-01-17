@@ -20,8 +20,10 @@ class VideoSeeder extends Seeder
 
         for ($i=0; $i < 100; $i++) { 
 	    	Video::create([
-	            'title' => $faker->title,
-	            'url' => $faker->youtubeUri(),
+	            'title' => $faker->realText(10),
+	            'imageUrl' => $faker->imageUrl($width = 640, $height = 480),
+	            'videoUrl' => $faker->youtubeRandomUri(),
+	            'duration' => $faker->numerify("##:##"),
 	        ]);
     	}
     }

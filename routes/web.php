@@ -19,10 +19,18 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})
+// ->middleware(['auth'])
+->name('dashboard');
 
-Route::view('/{any}', 'dashboard')
-    ->middleware(['auth'])
-    ->where('any', '.*');
+Route::get('/videos', function () {
+    return view('videos');
+})
+// ->middleware(['auth'])
+->name('videos');
+
+// Route::view('/{any}', 'dashboard')
+//     ->middleware(['auth'])
+//     ->where('any', '.*');
     
 require __DIR__.'/auth.php';
