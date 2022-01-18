@@ -1,89 +1,111 @@
 <template>
-    <div class="overflow-hidden overflow-x-auto min-w-full align-middle sm:rounded-md">
-        <div class="flex place-content-end mb-4">
-            <div class="px-4 py-2 text-white bg-indigo-600 hover:bg-indigo-700 cursor-pointer">
-                <router-link :to="{ name: 'companies.create' }" class="text-sm font-medium">Create company</router-link>
+    <div id="container">
+        <!--Card-->
+            <div class="card" >
+                <h5 class="card-title">Test</h5>
+                <a href="" class="text-decoration-none text-dark ">
+                    <!-- <img src="https://via.placeholder.com/640x480.png/007799?text=exercitationem" alt=""> -->
+                    <video class="img-fluid" playsinline autoplay muted loop>
+                        <source src="https://mdbootstrap.com/img/video/animation-intro.mp4" type="video/mp4">
+                    </video>
+                </a>
             </div>
-        </div>
-
-        <table class="min-w-full border divide-y divide-gray-200">
-            <thead>
-            <tr>
-                <th class="px-6 py-3 bg-gray-50">
-                    <span
-                        class="text-xs font-medium tracking-wider leading-4 text-left text-gray-500 uppercase">Name</span>
-                </th>
-                <th class="px-6 py-3 bg-gray-50">
-                    <span
-                        class="text-xs font-medium tracking-wider leading-4 text-left text-gray-500 uppercase">Email</span>
-                </th>
-                <th class="px-6 py-3 bg-gray-50">
-                    <span
-                        class="text-xs font-medium tracking-wider leading-4 text-left text-gray-500 uppercase">Address</span>
-                </th>
-                <th class="px-6 py-3 bg-gray-50">
-                    <span
-                        class="text-xs font-medium tracking-wider leading-4 text-left text-gray-500 uppercase">Website</span>
-                </th>
-                <th class="px-6 py-3 bg-gray-50">
-                </th>
-            </tr>
-            </thead>
-
-            <tbody class="bg-white divide-y divide-gray-200 divide-solid">
-            <template v-for="item in companies" :key="item.id">
-                <tr class="bg-white">
-                    <td class="px-6 py-4 text-sm leading-5 text-gray-900 whitespace-no-wrap">
-                        {{ item.name }}
-                    </td>
-                    <td class="px-6 py-4 text-sm leading-5 text-gray-900 whitespace-no-wrap">
-                        {{ item.email }}
-                    </td>
-                    <td class="px-6 py-4 text-sm leading-5 text-gray-900 whitespace-no-wrap">
-                        {{ item.address }}
-                    </td>
-                    <td class="px-6 py-4 text-sm leading-5 text-gray-900 whitespace-no-wrap">
-                        {{ item.website }}
-                    </td>
-                    <td class="px-6 py-4 text-sm leading-5 text-gray-900 whitespace-no-wrap">
-                        <router-link :to="{ name: 'companies.edit', params: { id: item.id } }"
-                                     class="mr-2 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">
-                            Edit
-                        </router-link>
-                        <button @click="deleteCompany(item.id)"
-                                class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">
-                        Delete</button>
-                    </td>
-                </tr>
-            </template>
-            </tbody>
-        </table>
+        <template v-for="item in videos" :key="item.id">
+            <!--Card-->
+            <div class="card" >
+                <h5 class="card-title">{{ item.title }}</h5>
+                <a :href="item.videoUrl" class="text-decoration-none text-dark ">
+                    <img :src="item.imageUrl" alt="">
+                    <video class="img-fluid" playsinline autoplay muted loop>
+                        <source :src="item.videoUrl" type="video/mp4">
+                    </video>
+                </a>
+            </div>
+        </template>    
     </div>
+    
 </template>
 
 <script>
-import useCompanies from "../../composables/companies";
+import useVideos from "../../composables/videos";
 import { onMounted } from "vue";
 
 export default {
     setup() {
-        const { companies, getCompanies, destroyCompany } = useCompanies()
+        const { videos, getVideos } = useVideos()
 
-        onMounted(getCompanies)
-
-        const deleteCompany = async (id) => {
-            if (!window.confirm('Are you sure?')) {
-                return
-            }
-
-            await destroyCompany(id);
-            await getCompanies();
-        }
+        onMounted(getVideos)
 
         return {
-            companies,
-            deleteCompany
+            videos
         }
     }
 }
 </script>
+<style scoped>
+body {
+	background: #202020;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FAFFD1, #202020);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FAFFD1, #202020); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	display: flex;
+	flex-direction: column;
+}
+
+#container {
+    background: #202020;
+    background: -webkit-linear-gradient(to top, #222222, #202020);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #222222, #202020); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	margin: auto;
+	opacity: .7;
+	border-radius: 3px;
+	margin-top: 50px;
+	padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+	width: 18%;
+	height: 200px;
+    min-height: 40%;
+	align-self: center;
+    /* background: #202020; */
+    /* background: -webkit-linear-gradient(to top, #222222, #202020);  Chrome 10-25, Safari 5.1-6 */
+    /* background: linear-gradient(to top, #222222, #202020); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	padding: 5px;
+	border-radius: 3px;
+	margin: 10px 10px;
+	font-family: monospace;
+	transition: all .15s ease-in-out;
+}
+.card:hover {
+    transform: scale(1.1);
+}
+
+.card-title {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+.card a {
+    height: 100%;
+}
+video,
+img {
+  object-fit: fill;
+  width: 100%;
+  height: 100%;
+}
+.card:hover img{
+    display: none;
+}
+.card img{
+    z-index: 2;
+}
+
+</style>

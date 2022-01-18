@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\VideoResource;
+use App\Http\Requests\VideoRequest;
 use App\Models\Video;
 
 class VideoController extends Controller
@@ -16,7 +17,7 @@ class VideoController extends Controller
      */
     public function index()
     {
-        return VideoResource::collection(Video::all());
+        return VideoResource::collection(Video::paginate(10));
 
     }
 
@@ -26,7 +27,7 @@ class VideoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(VideoRequest $request)
     {
         $video = Video::create($request->validated());
 
@@ -53,7 +54,7 @@ class VideoController extends Controller
      * @param  \App\Models\Video  $video
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Video $video)
+    public function update(VideoRequest $request,Video $video)
     {
         $video->update($request->validated());
 

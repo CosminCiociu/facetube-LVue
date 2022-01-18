@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('videos');
 });
 
 Route::get('/dashboard', function () {
@@ -29,8 +29,4 @@ Route::get('/videos', function () {
 // ->middleware(['auth'])
 ->name('videos');
 
-// Route::view('/{any}', 'dashboard')
-//     ->middleware(['auth'])
-//     ->where('any', '.*');
-    
 require __DIR__.'/auth.php';

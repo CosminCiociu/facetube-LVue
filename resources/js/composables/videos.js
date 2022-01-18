@@ -9,7 +9,8 @@ export default function useCompanies() {
     const errors = ref('')
 
     const getVideos = async () => {
-        let response = await axios.get('/api/videos')
+        
+        let response = await axios.get('/api/videos?page=' + 2)
         videos.value = response.data.data;
     }
 
