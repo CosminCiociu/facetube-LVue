@@ -4,6 +4,7 @@
             <!--Card-->
             <div class="card" >
                 <h5 class="card-title">{{ item.title }}</h5>
+                <span class="views">views:{{ item.views }}</span>
                 <router-link :to="{ name: 'single.video', params: {videoId: item.id } }" class="text-decoration-none text-dark ">
                     <img :src="item.imageUrl" alt="">
                     <video class="img-fluid" playsinline autoplay muted loop>
@@ -117,6 +118,23 @@ img {
     z-index: 2;
     top: 0;
     left: 0;
+}
+.views {
+    z-index: 3;
+    position: absolute;
+    bottom: 0;
+    left: 100%;
+    transform: translate(-100%,0);
+    color: #fafafa;
+    white-space: nowrap;
+    font-size: 12px;
+    line-height: 18px;
+    display: inline-block;
+    padding: 0px 8px;
+    vertical-align: middle;
+    border-radius: 10%;
+    background: #000;
+    background: rgba(0,0,0,.7);
 }
 
 </style>

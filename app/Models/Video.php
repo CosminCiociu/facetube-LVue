@@ -21,5 +21,7 @@ class Video extends Model
         'imageUrl',
         'videoUrl',
         'duration',
+        'likes',
+        'views'
     ];
 }

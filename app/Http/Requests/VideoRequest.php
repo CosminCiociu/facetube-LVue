@@ -28,6 +28,8 @@ class VideoRequest extends FormRequest
             'imageUrl'  => ['required', 'url'],
             'videoUrl'  => ['required', 'url'],
             'duration'  => ['required', 'string'],
+            'views'     => ['integer'],
+            'likes'     => ['integer'],
         ];
     }
 }

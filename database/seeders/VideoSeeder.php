@@ -23,7 +23,9 @@ class VideoSeeder extends Seeder
 	            'title' => $faker->realText(10),
 	            'imageUrl' => $faker->imageUrl($width = 640, $height = 480),
 	            'videoUrl' => $faker->youtubeRandomUri(),
+	            'views'    => $faker->numberBetween(1,1000),
 	            'duration' => $faker->numerify("##:##"),
+	            'likes'    => $faker->numberBetween(1,1000),
 	        ]);
     	}
     }

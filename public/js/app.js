@@ -26465,15 +26465,18 @@ var _hoisted_2 = {
 var _hoisted_3 = {
   "class": "card-title"
 };
-var _hoisted_4 = ["src"];
-var _hoisted_5 = {
+var _hoisted_4 = {
+  "class": "views"
+};
+var _hoisted_5 = ["src"];
+var _hoisted_6 = {
   "class": "img-fluid",
   playsinline: "",
   autoplay: "",
   muted: "",
   loop: ""
 };
-var _hoisted_6 = ["src"];
+var _hoisted_7 = ["src"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
@@ -26481,6 +26484,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
       key: item.id
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("Card"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.title), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_4, "views:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.views), 1
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
       to: {
@@ -26497,12 +26502,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           alt: ""
         }, null, 8
         /* PROPS */
-        , _hoisted_4), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("video", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("source", {
+        , _hoisted_5), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("video", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("source", {
           src: item.videoUrl,
           type: "video/mp4"
         }, null, 8
         /* PROPS */
-        , _hoisted_6)])];
+        , _hoisted_7)])];
       }),
       _: 2
       /* DYNAMIC */
@@ -32419,7 +32424,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nbody[data-v-62ebd51c] {\r\n\tbackground: #202020;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\r\n    background: linear-gradient(to right, #FAFFD1, #202020); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n\tdisplay: flex;\r\n\tflex-direction: column;\n}\n#container[data-v-62ebd51c] {\r\n    background: #202020;  /* Chrome 10-25, Safari 5.1-6 */\r\n    background: linear-gradient(to top, #b6b6b6, #202020); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n\tdisplay: flex;\r\n\tflex-direction: row;\r\n\tflex-wrap: wrap;\r\n\tmargin: auto;\r\n\t/* opacity: .7; */\r\n\tborder-radius: 3px;\r\n\tmargin-top: 50px;\r\n\tpadding: 10px;\r\n    justify-content: center;\r\n    align-items: center;\n}\n.card[data-v-62ebd51c] {\r\n\twidth: 18%;\r\n\theight: 200px;\r\n    min-height: 40%;\r\n\talign-self: center;\r\n    /* background: #202020; */\r\n    /* background: -webkit-linear-gradient(to top, #222222, #202020);  Chrome 10-25, Safari 5.1-6 */\r\n    /* background: linear-gradient(to top, #222222, #202020); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n\tpadding: 5px;\r\n\tborder-radius: 3px;\r\n\tmargin: 10px 10px;\r\n\tfont-family: monospace;\r\n\ttransition: all .15s ease-in-out;\n}\n.card[data-v-62ebd51c]:hover {\r\n    transform: scale(1.1);\n}\n.card-title[data-v-62ebd51c] {\r\n    width: 100%;\r\n    z-index: 3;\r\n    position: absolute;\r\n    bottom: 0;\r\n    left: 50%;\r\n    transform: translate(-50%,0);\r\n    text-align: center;\r\n    color: #fafafa;\n}\n.card a[data-v-62ebd51c] {\r\n    height: 100%;\n}\nvideo[data-v-62ebd51c],\r\nimg[data-v-62ebd51c] {\r\n  -o-object-fit: fill;\r\n     object-fit: fill;\r\n  width: 100%;\r\n  height: 100%;\n}\n.card:hover img[data-v-62ebd51c]{\r\n    display: none;\n}\n.card:hover .card-title[data-v-62ebd51c] {\r\n    -webkit-animation: mymove-62ebd51c 0.5s linear forwards;\r\n            animation: mymove-62ebd51c 0.5s linear forwards;\n}\n@-webkit-keyframes mymove-62ebd51c {\nfrom {\r\n    bottom: 0;\r\n    left: 50%;\r\n    transform: translate(-50%,0);\r\n    opacity: 1;\n}\nto {\r\n    bottom: 0;\r\n    left: 50%;\r\n    transform: translate(-50%,100%);\r\n    opacity: 0;\n}\n}\n@keyframes mymove-62ebd51c {\nfrom {\r\n    bottom: 0;\r\n    left: 50%;\r\n    transform: translate(-50%,0);\r\n    opacity: 1;\n}\nto {\r\n    bottom: 0;\r\n    left: 50%;\r\n    transform: translate(-50%,100%);\r\n    opacity: 0;\n}\n}\n.card img[data-v-62ebd51c]{\r\n    position: absolute;\r\n    z-index: 2;\r\n    top: 0;\r\n    left: 0;\n}\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nbody[data-v-62ebd51c] {\r\n\tbackground: #202020;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\r\n    background: linear-gradient(to right, #FAFFD1, #202020); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n\tdisplay: flex;\r\n\tflex-direction: column;\n}\n#container[data-v-62ebd51c] {\r\n    background: #202020;  /* Chrome 10-25, Safari 5.1-6 */\r\n    background: linear-gradient(to top, #b6b6b6, #202020); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n\tdisplay: flex;\r\n\tflex-direction: row;\r\n\tflex-wrap: wrap;\r\n\tmargin: auto;\r\n\t/* opacity: .7; */\r\n\tborder-radius: 3px;\r\n\tmargin-top: 50px;\r\n\tpadding: 10px;\r\n    justify-content: center;\r\n    align-items: center;\n}\n.card[data-v-62ebd51c] {\r\n\twidth: 18%;\r\n\theight: 200px;\r\n    min-height: 40%;\r\n\talign-self: center;\r\n    /* background: #202020; */\r\n    /* background: -webkit-linear-gradient(to top, #222222, #202020);  Chrome 10-25, Safari 5.1-6 */\r\n    /* background: linear-gradient(to top, #222222, #202020); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n\tpadding: 5px;\r\n\tborder-radius: 3px;\r\n\tmargin: 10px 10px;\r\n\tfont-family: monospace;\r\n\ttransition: all .15s ease-in-out;\n}\n.card[data-v-62ebd51c]:hover {\r\n    transform: scale(1.1);\n}\n.card-title[data-v-62ebd51c] {\r\n    width: 100%;\r\n    z-index: 3;\r\n    position: absolute;\r\n    bottom: 0;\r\n    left: 50%;\r\n    transform: translate(-50%,0);\r\n    text-align: center;\r\n    color: #fafafa;\n}\n.card a[data-v-62ebd51c] {\r\n    height: 100%;\n}\nvideo[data-v-62ebd51c],\r\nimg[data-v-62ebd51c] {\r\n  -o-object-fit: fill;\r\n     object-fit: fill;\r\n  width: 100%;\r\n  height: 100%;\n}\n.card:hover img[data-v-62ebd51c]{\r\n    display: none;\n}\n.card:hover .card-title[data-v-62ebd51c] {\r\n    -webkit-animation: mymove-62ebd51c 0.5s linear forwards;\r\n            animation: mymove-62ebd51c 0.5s linear forwards;\n}\n@-webkit-keyframes mymove-62ebd51c {\nfrom {\r\n    bottom: 0;\r\n    left: 50%;\r\n    transform: translate(-50%,0);\r\n    opacity: 1;\n}\nto {\r\n    bottom: 0;\r\n    left: 50%;\r\n    transform: translate(-50%,100%);\r\n    opacity: 0;\n}\n}\n@keyframes mymove-62ebd51c {\nfrom {\r\n    bottom: 0;\r\n    left: 50%;\r\n    transform: translate(-50%,0);\r\n    opacity: 1;\n}\nto {\r\n    bottom: 0;\r\n    left: 50%;\r\n    transform: translate(-50%,100%);\r\n    opacity: 0;\n}\n}\n.card img[data-v-62ebd51c]{\r\n    position: absolute;\r\n    z-index: 2;\r\n    top: 0;\r\n    left: 0;\n}\n.views[data-v-62ebd51c] {\r\n    z-index: 3;\r\n    position: absolute;\r\n    bottom: 0;\r\n    left: 100%;\r\n    transform: translate(-100%,0);\r\n    color: #fafafa;\r\n    white-space: nowrap;\r\n    font-size: 12px;\r\n    line-height: 18px;\r\n    display: inline-block;\r\n    padding: 0px 8px;\r\n    vertical-align: middle;\r\n    border-radius: 10%;\r\n    background: #000;\r\n    background: rgba(0,0,0,.7);\n}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
