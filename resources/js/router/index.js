@@ -1,42 +1,36 @@
 import { createRouter, createWebHistory } from "vue-router";
 import 'bootstrap';
 
-import CompaniesIndex from '../components/companies/CompaniesIndex'
-import CompaniesCreate from '../components/companies/CompaniesCreate'
-import CompaniesEdit from '../components/companies/CompaniesEdit'
+import FrontpageIndex from '../components/frontpage/FrontpageIndex'
 import VideosIndex from '../components/videos/VideosIndex'
 import VideosCreate from '../components/videos/VideosCreate'
 import VideosEdit from '../components/videos/VideosEdit'
+import SingleVideo from '../components/frontpage/SingleVideo'
 
 const routes = [
     {
-        path: '/dashboard',
-        name: 'companies.index',
-        component: CompaniesIndex
+        path: '/',
+        name: 'home',
+        component: FrontpageIndex
     },
     {
-        path: '/companies/create',
-        name: 'companies.create',
-        component: CompaniesCreate
-    },
-    {
-        path: '/companies/:id/edit',
-        name: 'companies.edit',
-        component: CompaniesEdit,
+        path: '/:videoId/',
+        name: 'single.video',
+        component: SingleVideo,
         props: true
     },
     {
-        path: '/videos',
+        path: '/admin/videos',
         name: 'videos.index',
         component: VideosIndex
     },
     {
-        path: '/videos/create',
+        path: '/admin/videos/create',
         name: 'videos.create',
         component: VideosCreate
     },
     {
-        path: '/videos/:id/edit',
+        path: '/admin/videos/:id/edit',
         name: 'videos.edit',
         component: VideosEdit,
         props: true

@@ -1,29 +1,18 @@
 <template>
     <div id="container">
-        <!--Card-->
-            <div class="card" >
-                <h5 class="card-title">Test</h5>
-                <a href="" class="text-decoration-none text-dark ">
-                    <!-- <img src="https://via.placeholder.com/640x480.png/007799?text=exercitationem" alt=""> -->
-                    <video class="img-fluid" playsinline autoplay muted loop>
-                        <source src="https://mdbootstrap.com/img/video/animation-intro.mp4" type="video/mp4">
-                    </video>
-                </a>
-            </div>
         <template v-for="item in videos" :key="item.id">
             <!--Card-->
             <div class="card" >
                 <h5 class="card-title">{{ item.title }}</h5>
-                <a :href="item.videoUrl" class="text-decoration-none text-dark ">
+                <router-link :to="{ name: 'single.video', params: {videoId: item.id } }" class="text-decoration-none text-dark ">
                     <img :src="item.imageUrl" alt="">
                     <video class="img-fluid" playsinline autoplay muted loop>
                         <source :src="item.videoUrl" type="video/mp4">
                     </video>
-                </a>
+                </router-link>
             </div>
         </template>    
     </div>
-    
 </template>
 
 <script>
@@ -33,13 +22,12 @@ import { onMounted } from "vue";
 export default {
     setup() {
         const { videos, getVideos } = useVideos()
-
         onMounted(getVideos)
-
         return {
             videos
         }
     }
+    
 }
 </script>
 <style scoped>
@@ -53,13 +41,13 @@ body {
 
 #container {
     background: #202020;
-    background: -webkit-linear-gradient(to top, #222222, #202020);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #222222, #202020); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: -webkit-linear-gradient(to top, #b6b6b6, #202020);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #b6b6b6, #202020); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	margin: auto;
-	opacity: .7;
+	/* opacity: .7; */
 	border-radius: 3px;
 	margin-top: 50px;
 	padding: 10px;
@@ -86,11 +74,14 @@ body {
 }
 
 .card-title {
+    width: 100%;
+    z-index: 3;
     position: absolute;
     bottom: 0;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%,0);
     text-align: center;
+    color: #fafafa;
 }
 .card a {
     height: 100%;
@@ -104,8 +95,28 @@ img {
 .card:hover img{
     display: none;
 }
+.card:hover .card-title {
+    animation: mymove 0.5s linear forwards;
+}
+@keyframes mymove {
+  from {
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%,0);
+    opacity: 1;
+    }
+  to {
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%,100%);
+    opacity: 0;
+    }
+}
 .card img{
+    position: absolute;
     z-index: 2;
+    top: 0;
+    left: 0;
 }
 
 </style>

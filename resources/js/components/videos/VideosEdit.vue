@@ -38,7 +38,7 @@
             <div>
                 <label for="duration" class="form-label block text-sm font-medium text-gray-700">Duration</label>
                 <div class="mt-3">
-                    <input disabled type="text" name="duration" id="duration"
+                    <input type="text" name="duration" id="duration"
                            class="form-control block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                            v-model="video.duration">
                 </div>

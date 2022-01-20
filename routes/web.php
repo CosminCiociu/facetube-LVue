@@ -15,18 +15,29 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('videos');
-});
+})->name('home');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})
-// ->middleware(['auth'])
-->name('dashboard');
+Route::get('/{videoId}', function () {
+    return view('singleVideo');
+})->name('single.video');;
 
-Route::get('/videos', function () {
+
+Route::get('admin/videos', function () {
     return view('videos');
 })
 // ->middleware(['auth'])
 ->name('videos');
+
+Route::get('admin/videos/create', function () {
+    return view('videos');
+})
+// ->middleware(['auth'])
+->name('videos.create');
+
+Route::get('admin/videos/{id}/edit', function () {
+    return view('videos');
+})
+// ->middleware(['auth'])
+->name('videos.edit');
 
 require __DIR__.'/auth.php';

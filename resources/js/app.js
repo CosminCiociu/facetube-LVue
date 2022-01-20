@@ -7,13 +7,8 @@ import router from './router'
 import 'bootstrap'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import CompaniesIndex from './components/companies/CompaniesIndex.vue';
-import VideosIndex from './components/videos/VideosIndex.vue';
-
 createApp({
     components: {
-        CompaniesIndex,
-        VideosIndex,
     }
 }).use(router).mount('#app')
 

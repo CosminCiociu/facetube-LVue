@@ -10,7 +10,7 @@ export default function useCompanies() {
 
     const getVideos = async () => {
         
-        let response = await axios.get('/api/videos?page=' + 2)
+        let response = await axios.get('/api/videos/')
         videos.value = response.data.data;
     }
 
@@ -34,7 +34,7 @@ export default function useCompanies() {
     const updateVideo = async (id) => {
         errors.value = ''
         try {
-            await axios.put('/api/videos/' + id, company.value)
+            await axios.put('/api/videos/' + id, video.value)
             await router.push({name: 'videos.index'})
         } catch (e) {
             if (e.response.status === 422) {
