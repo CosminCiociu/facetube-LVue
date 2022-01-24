@@ -1,0 +1,44 @@
+<template>
+  <template v-for="video in videos" :key="video.id">
+      <VideoItem  :video="video"/>
+    </template>
+</template>
+
+<script>
+
+import useVideos from "../../composables/videos";
+import { onMounted } from "vue";
+import VideoItem from './VideoItem';
+
+export default {
+    name : "VideoList",
+    components: {
+        VideoItem,
+    },
+    setup() {
+        const { videos, getVideos } = useVideos()
+        onMounted(getVideos)
+        return {
+            videos
+        }
+    }
+}
+</script>
+
+<style scoped>
+
+.card {
+	width: 18%;
+	height: 200px;
+    min-height: 40%;
+	align-self: center;
+    /* background: #202020; */
+    /* background: -webkit-linear-gradient(to top, #222222, #202020);  Chrome 10-25, Safari 5.1-6 */
+    /* background: linear-gradient(to top, #222222, #202020); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	padding: 5px;
+	border-radius: 3px;
+	margin: 10px 10px;
+	font-family: monospace;
+	transition: all .15s ease-in-out;
+}
+</style>
