@@ -26469,14 +26469,6 @@ var _hoisted_4 = {
   "class": "views"
 };
 var _hoisted_5 = ["src"];
-var _hoisted_6 = {
-  "class": "img-fluid",
-  playsinline: "",
-  autoplay: "",
-  muted: "",
-  loop: ""
-};
-var _hoisted_7 = ["src"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
@@ -26502,12 +26494,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           alt: ""
         }, null, 8
         /* PROPS */
-        , _hoisted_5), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("video", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("source", {
-          src: item.videoUrl,
-          type: "video/mp4"
-        }, null, 8
-        /* PROPS */
-        , _hoisted_7)])];
+        , _hoisted_5), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <video class=\"img-fluid\" playsinline autoplay muted loop>\r\n                        <source :src=\"item.videoUrl\" type=\"video/mp4\">\r\n                    </video> ")];
       }),
       _: 2
       /* DYNAMIC */
@@ -26968,7 +26955,13 @@ var _hoisted_14 = {
 
 var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Edit ");
 
-var _hoisted_16 = ["onClick"];
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  "x-on:click": "deleteVideo(item.id)",
+  "class": "btn btn-danger"
+}, " Delete", -1
+/* HOISTED */
+);
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
@@ -27023,14 +27016,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
     }, 1032
     /* PROPS, DYNAMIC_SLOTS */
-    , ["to"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-      onClick: function onClick($event) {
-        return $setup.deleteVideo(item.id);
-      },
-      "class": "btn btn-danger"
-    }, " Delete", 8
-    /* PROPS */
-    , _hoisted_16)])]);
+    , ["to"]), _hoisted_16])]);
   }), 128
   /* KEYED_FRAGMENT */
   ))])])]);
@@ -27050,6 +27036,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./router */ "./resources/js/router/index.js");
 /* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js");
 /* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
+/* harmony import */ var _components_frontpage_FrontpageIndex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/frontpage/FrontpageIndex */ "./resources/js/components/frontpage/FrontpageIndex.vue");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/module.esm.js");
@@ -27058,8 +27045,11 @@ __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/module.esm.js"
 
 
 
+
 (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)({
-  components: {}
+  components: {
+    FrontpageIndex: _components_frontpage_FrontpageIndex__WEBPACK_IMPORTED_MODULE_4__["default"]
+  }
 }).use(_router__WEBPACK_IMPORTED_MODULE_1__["default"]).mount('#app');
 
 /***/ }),

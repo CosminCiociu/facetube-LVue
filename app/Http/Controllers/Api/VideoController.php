@@ -17,7 +17,7 @@ class VideoController extends Controller
      */
     public function index()
     {
-        return VideoResource::collection(Video::all()->sortByDesc('id'));
+        return VideoResource::collection(Video::paginate(60)->sortByDesc('id'));
 
     }
 

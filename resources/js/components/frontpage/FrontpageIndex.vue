@@ -7,9 +7,9 @@
                 <span class="views">views:{{ item.views }}</span>
                 <router-link :to="{ name: 'single.video', params: {videoId: item.id } }" class="text-decoration-none text-dark ">
                     <img :src="item.imageUrl" alt="">
-                    <video class="img-fluid" playsinline autoplay muted loop>
+                    <!-- <video class="img-fluid" playsinline autoplay muted loop>
                         <source :src="item.videoUrl" type="video/mp4">
-                    </video>
+                    </video> -->
                 </router-link>
             </div>
         </template>    

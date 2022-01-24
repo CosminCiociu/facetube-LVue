@@ -53,7 +53,7 @@
                                      class="btn btn-dark transition ease-in-out duration-150">
                             Edit
                         </router-link>
-                        <button @click="deleteVideo(item.id)"
+                        <button  x-on:click="deleteVideo(item.id)"
                                 class="btn btn-danger">
                         Delete</button>
                     </td>
