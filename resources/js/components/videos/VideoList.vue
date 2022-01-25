@@ -1,7 +1,12 @@
 <template>
-  <template v-for="video in videos" :key="video.id">
-      <VideoItem  :video="video"/>
+    
+    <template v-if="videos.length">
+            <template v-for="video in videos" :key="video.id">
+                <VideoItem  :video="video"/>
+            </template>
+        <pagination :next='next' :prev='prev' :current="infoPaginate.current" :total="infoPaginate.last_page"/>
     </template>
+                
 </template>
 
 <script>
@@ -9,20 +14,34 @@
 import useVideos from "../../composables/videos";
 import { onMounted } from "vue";
 import VideoItem from './VideoItem';
+import Pagination from '../utilities/Pagination'
 
 export default {
     name : "VideoList",
     components: {
         VideoItem,
+        Pagination
     },
     setup() {
-        const { videos, getVideos } = useVideos()
+        const { videos, getVideos, infoPaginate } = useVideos()
         onMounted(getVideos)
         return {
-            videos
+            videos,
+            infoPaginate,
+            getVideos
         }
-    }
-}
+    },
+      methods: {
+        prev() {
+            this.infoPaginate.current--
+            this.getVideos(this.infoPaginate.current)
+        },
+        next() {
+            this.infoPaginate.current++
+            this.getVideos(this.infoPaginate.current)
+        },
+      },
+}   
 </script>
 
 <style scoped>

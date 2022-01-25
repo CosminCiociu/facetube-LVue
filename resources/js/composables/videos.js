@@ -7,11 +7,16 @@ export default function useCompanies() {
     const video = ref([])
     const router = useRouter()
     const errors = ref('')
+    const infoPaginate = ref({})
 
-    const getVideos = async () => {
-        
-        let response = await axios.get('/api/videos/')
+    const getVideos = async (page = 1) => {
+        let response = await axios.get(`/api/videos?page=${page}`)
         videos.value = response.data.data;
+        infoPaginate.value = {
+            current: response.data.current_page,
+            last_page: response.data.last_page,
+            per_page: response.data.per_page,
+        }
     }
 
     const getVideo = async (id) => {
@@ -52,6 +57,7 @@ export default function useCompanies() {
         videos,
         video,
         errors,
+        infoPaginate,
         getVideos,
         getVideo,
         storeVideo,

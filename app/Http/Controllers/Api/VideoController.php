@@ -17,7 +17,10 @@ class VideoController extends Controller
      */
     public function index()
     {
-        return VideoResource::collection(Video::paginate(60)->sortByDesc('id'));
+        return Video::paginate(
+            $perPage = 60,
+            $columns = ['id','title','imageUrl','views','likes'],
+        );
     }
 
     /**
@@ -72,15 +75,5 @@ class VideoController extends Controller
 
         return response()->noContent();
 
-    }
-    
-    public function getVideosFrontPage()
-    {
-        // return Video::paginate(
-        //     $perPage = 60,
-        //     $columns = ['id','title','imageUrl','views','likes'],
-        //     $options = true,
-        // );
-        return Video::paginate(request()->all);
     }
 }
