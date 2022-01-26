@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\VideoResource;
 use App\Http\Requests\VideoRequest;
 use App\Models\Video;
+use DateTime;
 
 class VideoController extends Controller
 {
@@ -15,12 +16,32 @@ class VideoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Video::paginate(
-            $perPage = 60,
-            $columns = ['id','title','imageUrl','views','likes'],
-        );
+        if($request->input('date')){
+            switch ($request -> input('date')) {
+                case "today":
+                    $video = Video::whereDate('dateCreated', '>' , date("Y-m-d", strtotime("-1 days")));
+                    break;
+
+                case "week":
+                    $video = Video::whereDate('dateCreated', '>' , date("Y-m-d", strtotime("-1 weeks")));
+                    break;
+
+                case "mounth":
+                    $video = Video::whereDate('dateCreated', '>' , date("Y-m-d", strtotime("-1 mounths")));
+                    break;
+                case "alltime":
+                    return Video::paginate(
+                        $perPage = 60,
+                        $columns = ['id','title','imageUrl','views','likes'],
+                    );
+            }
+        };
+            return $video->paginate(
+                $perPage = 60,
+                $columns = ['id','title','imageUrl','views','likes'],
+            );
     }
 
     /**

@@ -18,14 +18,15 @@ class VideoSeeder extends Seeder
         $faker = Faker::create();
         $faker->addProvider(new \Faker\Provider\Youtube($faker));
 
-        for ($i=0; $i < 100; $i++) { 
+        for ($i=0; $i < 500; $i++) { 
 	    	Video::create([
 	            'title' => $faker->realText(10),
-	            'imageUrl' => $faker->imageUrl($width = 640, $height = 480),
-	            'videoUrl' => $faker->youtubeRandomUri(),
-	            'views'    => $faker->numberBetween(1,1000),
-	            'duration' => $faker->numerify("##:##"),
-	            'likes'    => $faker->numberBetween(1,1000),
+	            'imageUrl'      => $faker->imageUrl($width = 640, $height = 480),
+	            'videoUrl'      => $faker->youtubeRandomUri(),
+	            'views'         => $faker->numberBetween(1,1000),
+	            'dateCreated'   => $faker->dateTimeBetween('-1 years','now'),
+	            'duration'      => $faker->numerify("##:##"),
+	            'likes'         => $faker->numberBetween(1,1000),
 	        ]);
     	}
     }

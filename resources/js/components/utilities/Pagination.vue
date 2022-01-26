@@ -10,8 +10,8 @@
             <li v-show="current - 1 > 0" class="page-item">
                 <a class="page-link " @click="prev" aria-label="Page-{{ current }}">{{ current - 1 }}</a>
             </li>
-            <li class="page-item active">
-                <a class="page-link " @click="prev" aria-label="Page-{{ current }}">{{ current }}</a>
+            <li v-show="total != 1" class="page-item active">
+                <a class="page-link " aria-label="Page-{{ current }}">{{ current }}</a>
             </li>
             <li v-show="current < total" class="page-item ">
                 <a class="page-link " @click="next()" aria-label="Page-{{ current }}">{{ current + 1 }}</a>

@@ -1,11 +1,11 @@
 <template>
     <div class="dropdown">
-      <label class="filer-views" for="filer-views">Views:</label>
-      <select name = "filer-views" class="form-select form-select-sm select-views" aria-label="Default select example">
-        <option value="1">Today</option>
-        <option value="2">This week</option>
-        <option value="3">This mounth</option>
-        <option value="4">All time</option>
+      <label class="filer-views" for="filer-views">Date:</label>
+      <select @change="changeDateSelect" name="filer-views" class="form-select form-select-sm select-views" v-model="dateSelect" aria-label="Default select example">
+        <option value="today">Today</option>
+        <option value="week">This week</option>
+        <option value="mounth">This mounth</option>
+        <option value="alltime">All time</option>
       </select>
     </div>
 </template>
@@ -13,12 +13,16 @@
 <script>
 export default {
     name: "Filters",
+	props: {
+		dateSelect: String,
+		changeDateSelect: Function
+	}
 }
 </script>
 
 <style scoped>
 	.dropdown{
-		width: 20%;
+		width: 140px;
 		display: flex;
 		justify-content: center;
 		align-items: center;

@@ -14,35 +14,46 @@
 <script>
 
 import useVideos from "../../composables/videos";
-import { onMounted } from "vue";
+import { onMounted, watch } from "vue";
 import VideoItem from './VideoItem';
 import Pagination from '../utilities/Pagination'
 
 export default {
     name : "VideoList",
+    props: {
+        dateSelect: String,
+    },
     components: {
         VideoItem,
         Pagination
     },
-    setup() {
+    setup(props) {
         const { videos, getVideos, infoPaginate } = useVideos()
         onMounted(getVideos)
+
+        watch(() => props.dateSelect, (dateValue) => {
+                console.log(dateValue);
+                // Page is 1 and dataValue will be received
+                // From props
+                getVideos(1, dateValue)  
+            });
+
         return {
             videos,
             infoPaginate,
             getVideos
         }
     },
-      methods: {
+    methods: {
         prev() {
             this.infoPaginate.current--
-            this.getVideos(this.infoPaginate.current)
+            this.getVideos(this.infoPaginate.current,this.dateSelect)
         },
         next() {
             this.infoPaginate.current++
-            this.getVideos(this.infoPaginate.current)
+            this.getVideos(this.infoPaginate.current,this.dateSelect)
         },
-      },
+    }
 }   
 </script>
 

@@ -1,9 +1,9 @@
 <template>
     <div id="filters">
-        <Filters />
+        <Filters :dateSelect="dateSelect" :changeDateSelect="changeDateSelect"/>
     </div>
     <div id="container">
-        <VideoList />    
+        <VideoList :dateSelect="dateSelect"/>    
     </div>
 </template>
 
@@ -13,9 +13,19 @@ import Filters from '../utilities/Filters'
 import VideoList from "../videos/VideoList";
 
 export default {
+    data() {
+        return {
+            dateSelect:'today',
+        }
+    },
     components: {
         VideoList,
         Filters
+    },
+    methods: {
+        changeDateSelect(newVal) {
+            this.dateSelect = newVal.target.value
+        },
     }
 }
 </script>

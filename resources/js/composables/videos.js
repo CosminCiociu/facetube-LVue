@@ -9,9 +9,12 @@ export default function useCompanies() {
     const errors = ref('')
     const infoPaginate = ref({})
 
-    const getVideos = async (page = 1) => {
-        let response = await axios.get(`/api/videos?page=${page}`)
+    const getVideos = async (page = 1,dateValue = 'today') => {
+        let response = 
+        await axios.get(`/api/videos?page=${page}&date=${dateValue}`)
+
         videos.value = response.data.data;
+        
         infoPaginate.value = {
             current: response.data.current_page,
             last_page: response.data.last_page,
@@ -62,6 +65,6 @@ export default function useCompanies() {
         getVideo,
         storeVideo,
         updateVideo,
-        destroyVideo
+        destroyVideo,
     }
 }

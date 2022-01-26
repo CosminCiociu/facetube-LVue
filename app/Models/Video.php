@@ -21,6 +21,7 @@ class Video extends Model
         'imageUrl',
         'videoUrl',
         'duration',
+        'dateCreated',
         'likes',
         'views'
     ];

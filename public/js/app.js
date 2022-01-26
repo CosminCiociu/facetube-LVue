@@ -26166,9 +26166,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      dateSelect: 'today'
+    };
+  },
   components: {
     VideoList: _videos_VideoList__WEBPACK_IMPORTED_MODULE_1__["default"],
     Filters: _utilities_Filters__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  methods: {
+    changeDateSelect: function changeDateSelect(newVal) {
+      this.dateSelect = newVal.target.value;
+    }
   }
 });
 
@@ -26224,7 +26234,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "Filters"
+  name: "Filters",
+  props: {
+    dateSelect: String,
+    changeDateSelect: Function
+  }
 });
 
 /***/ }),
@@ -26300,17 +26314,28 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "VideoList",
+  props: {
+    dateSelect: String
+  },
   components: {
     VideoItem: _VideoItem__WEBPACK_IMPORTED_MODULE_2__["default"],
     Pagination: _utilities_Pagination__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
-  setup: function setup() {
+  setup: function setup(props) {
     var _useVideos = (0,_composables_videos__WEBPACK_IMPORTED_MODULE_0__["default"])(),
         videos = _useVideos.videos,
         getVideos = _useVideos.getVideos,
         infoPaginate = _useVideos.infoPaginate;
 
     (0,vue__WEBPACK_IMPORTED_MODULE_1__.onMounted)(getVideos);
+    (0,vue__WEBPACK_IMPORTED_MODULE_1__.watch)(function () {
+      return props.dateSelect;
+    }, function (dateValue) {
+      console.log(dateValue); // Page is 1 and dataValue will be received
+      // From props
+
+      getVideos(1, dateValue);
+    });
     return {
       videos: videos,
       infoPaginate: infoPaginate,
@@ -26320,11 +26345,11 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     prev: function prev() {
       this.infoPaginate.current--;
-      this.getVideos(this.infoPaginate.current);
+      this.getVideos(this.infoPaginate.current, this.dateSelect);
     },
     next: function next() {
       this.infoPaginate.current++;
-      this.getVideos(this.infoPaginate.current);
+      this.getVideos(this.infoPaginate.current, this.dateSelect);
     }
   }
 });
@@ -26580,7 +26605,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_VideoList = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("VideoList");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Filters)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_VideoList)])], 64
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Filters, {
+    dateSelect: $data.dateSelect,
+    changeDateSelect: $options.changeDateSelect
+  }, null, 8
+  /* PROPS */
+  , ["dateSelect", "changeDateSelect"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_VideoList, {
+    dateSelect: $data.dateSelect
+  }, null, 8
+  /* PROPS */
+  , ["dateSelect"])])], 64
   /* STABLE_FRAGMENT */
   );
 }
@@ -26653,11 +26687,62 @@ var _hoisted_1 = {
   "class": "dropdown"
 };
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<label class=\"filer-views\" for=\"filer-views\" data-v-7775281b>Views:</label><select name=\"filer-views\" class=\"form-select form-select-sm select-views\" aria-label=\"Default select example\" data-v-7775281b><option value=\"1\" data-v-7775281b>Today</option><option value=\"2\" data-v-7775281b>This week</option><option value=\"3\" data-v-7775281b>This mounth</option><option value=\"4\" data-v-7775281b>All time</option></select>", 2);
+var _hoisted_2 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+    "class": "filer-views",
+    "for": "filer-views"
+  }, "Date:", -1
+  /* HOISTED */
+  );
+});
 
-var _hoisted_4 = [_hoisted_2];
+var _hoisted_3 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+    value: "today"
+  }, "Today", -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_4 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+    value: "week"
+  }, "This week", -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_5 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+    value: "mounth"
+  }, "This mounth", -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_6 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+    value: "alltime"
+  }, "All time", -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_7 = [_hoisted_3, _hoisted_4, _hoisted_5, _hoisted_6];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, _hoisted_4);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+    onChange: _cache[0] || (_cache[0] = function () {
+      return $props.changeDateSelect && $props.changeDateSelect.apply($props, arguments);
+    }),
+    name: "filer-views",
+    "class": "form-select form-select-sm select-views",
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return $props.dateSelect = $event;
+    }),
+    "aria-label": "Default select example"
+  }, _hoisted_7, 544
+  /* HYDRATE_EVENTS, NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $props.dateSelect]])]);
 }
 
 /***/ }),
@@ -26708,15 +26793,19 @@ var _hoisted_8 = {
   "class": "page-item active"
 };
 var _hoisted_9 = {
-  "class": "page-item"
+  "class": "page-link",
+  "aria-label": "Page-{{ current }}"
 };
 var _hoisted_10 = {
   "class": "page-item"
 };
+var _hoisted_11 = {
+  "class": "page-item"
+};
 
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Next ");
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Next ");
 
-var _hoisted_12 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_13 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
     "aria-hidden": "true"
   }, "»", -1
@@ -26724,7 +26813,7 @@ var _hoisted_12 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_13 = [_hoisted_11, _hoisted_12];
+var _hoisted_14 = [_hoisted_12, _hoisted_13];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     "class": "page-link",
@@ -26744,17 +26833,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   )], 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $props.current - 1 > 0]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-    "class": "page-link",
-    onClick: _cache[2] || (_cache[2] = function () {
-      return $props.prev && $props.prev.apply($props, arguments);
-    }),
-    "aria-label": "Page-{{ current }}"
-  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.current), 1
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $props.current - 1 > 0]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.current), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  )], 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $props.total != 1]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     "class": "page-link",
-    onClick: _cache[3] || (_cache[3] = function ($event) {
+    onClick: _cache[2] || (_cache[2] = function ($event) {
       return $props.next();
     }),
     "aria-label": "Page-{{ current }}"
@@ -26762,13 +26847,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   )], 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $props.current < $props.total]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $props.current < $props.total]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     "class": "page-link",
-    onClick: _cache[4] || (_cache[4] = function ($event) {
+    onClick: _cache[3] || (_cache[3] = function ($event) {
       return $props.next();
     }),
     "aria-label": "Previous"
-  }, _hoisted_13)], 512
+  }, _hoisted_14)], 512
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $props.current < $props.total]])])]);
 }
@@ -27451,6 +27536,7 @@ function useCompanies() {
   var getVideos = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
       var page,
+          dateValue,
           response,
           _args = arguments;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
@@ -27458,10 +27544,11 @@ function useCompanies() {
           switch (_context.prev = _context.next) {
             case 0:
               page = _args.length > 0 && _args[0] !== undefined ? _args[0] : 1;
-              _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().get("/api/videos?page=".concat(page));
+              dateValue = _args.length > 1 && _args[1] !== undefined ? _args[1] : 'today';
+              _context.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get("/api/videos?page=".concat(page, "&date=").concat(dateValue));
 
-            case 3:
+            case 4:
               response = _context.sent;
               videos.value = response.data.data;
               infoPaginate.value = {
@@ -27470,7 +27557,7 @@ function useCompanies() {
                 per_page: response.data.per_page
               };
 
-            case 6:
+            case 7:
             case "end":
               return _context.stop();
           }
@@ -32802,7 +32889,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.dropdown[data-v-7775281b]{\r\n\t\twidth: 20%;\r\n\t\tdisplay: flex;\r\n\t\tjustify-content: center;\r\n\t\talign-items: center;\n}\n.filer-views[data-v-7775281b] {\r\n\t\tpadding-right: 5px;\n}\n.select-views[data-v-7775281b] {\r\n\t\tbackground-color: #404040 !important;\r\n\t\tcolor: #ddd !important;\r\n\t\tbackground-image:none;\n}\r\n\t\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.dropdown[data-v-7775281b]{\r\n\t\twidth: 140px;\r\n\t\tdisplay: flex;\r\n\t\tjustify-content: center;\r\n\t\talign-items: center;\n}\n.filer-views[data-v-7775281b] {\r\n\t\tpadding-right: 5px;\n}\n.select-views[data-v-7775281b] {\r\n\t\tbackground-color: #404040 !important;\r\n\t\tcolor: #ddd !important;\r\n\t\tbackground-image:none;\n}\r\n\t\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
