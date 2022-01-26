@@ -15,7 +15,7 @@ import VideoList from "../videos/VideoList";
 export default {
     data() {
         return {
-            dateSelect:'today',
+            dateSelect:'mounth',
         }
     },
     components: {

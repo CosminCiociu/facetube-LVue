@@ -22,7 +22,7 @@ export default {
 
 <style scoped>
 	.dropdown{
-		width: 140px;
+		width: 170px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -33,7 +33,11 @@ export default {
 	.select-views {
 		background-color: #404040 !important;
 		color: #ddd !important;
-		background-image:none;
+		background-image:  url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAAAXNSR0IArs4c6QAAAiRJREFUSEut1s9r02AYB/Dv09SOgTAYHjwJg/0BHQ72B+wyLx6EgJexsW4r7jBbZpd1bdP0F011s7hCRrXUMU9SQYSBXoUxEAoeBEHw4GWg7KBCBxrWvpLiZN2aNO9rc0ye5/tJ8r5v3hAcjmxh8zWAKaeaM9fexJWVG3a15BSS0TeYS6Rdlli7Z5vnCKXzD7ggNRoRg1K5+1xQMrYqBmnZAhekxRUxSE3nuaC0GhWDEqkcF5RJxsSgWDLLBeVScTEomkhzQfmMag8pcY0rjGddna2lyHriFUA3RQPc9DHCM1IUZahJ3jpAo26aeGsI+HDy+3ii/U5DkXW/h3AAYJA3qEf9T+ZpjRd1/fO/wQtF1mbB8LSfEAG3ihv6SyuzY5Ysh1fLIFrsC8agbxUL0dOsDkjTNN/Rj+MDAq7/J/b22+GXyVqt1uwKWScXl5Vrl3DyngHDgtihxMyxUql01DG9u4UFl8JT5MEeAIkTM1stz+RjY3P/fJ/tSl64c1clQooHYmChJ8bWo249tpAsy9LQlat7YC63csLzynbpttBWHgiEhyGZdQAjPZ7s44CXTRiG0RCCrKbZhSU/gd4BzGcT0qAmG69Wtz853YzjP8Np48xcMACiSrcgRkzerZRf9BpLV5AVMjMXrDAgcC7w4W61vNILufBlcGqQ5fDgwOX2Yvb/rdv/1fhuLUqzr5AVNj09PwKJ6gzM9MI3trNjfHWDWDV/ALI8ofhdixViAAAAAElFTkSuQmCC")  !important; /* Better placement regardless of input width */
+;
+
+
 	}
+
 	
 </style>

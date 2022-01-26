@@ -9,7 +9,7 @@ export default function useCompanies() {
     const errors = ref('')
     const infoPaginate = ref({})
 
-    const getVideos = async (page = 1,dateValue = 'today') => {
+    const getVideos = async (page = 1,dateValue = 'mounth') => {
         let response = 
         await axios.get(`/api/videos?page=${page}&date=${dateValue}`)
 
