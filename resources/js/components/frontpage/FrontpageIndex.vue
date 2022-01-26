@@ -1,4 +1,7 @@
 <template>
+    <div id="filters">
+        <Filters />
+    </div>
     <div id="container">
         <VideoList />    
     </div>
@@ -6,11 +9,13 @@
 
 <script>
 
+import Filters from '../utilities/Filters'
 import VideoList from "../videos/VideoList";
 
 export default {
     components: {
-        VideoList
+        VideoList,
+        Filters
     }
 }
 </script>

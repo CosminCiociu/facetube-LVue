@@ -1,10 +1,12 @@
 <template>
-    
     <template v-if="videos.length">
             <template v-for="video in videos" :key="video.id">
                 <VideoItem  :video="video"/>
             </template>
-        <pagination :next='next' :prev='prev' :current="infoPaginate.current" :total="infoPaginate.last_page"/>
+            <nav class="pagination w-100 pagination">
+                <pagination :next='next' :prev='prev' :current="infoPaginate.current" :total="infoPaginate.last_page"/>
+            </nav>
+
     </template>
                 
 </template>
