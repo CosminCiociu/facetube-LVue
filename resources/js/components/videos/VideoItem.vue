@@ -2,7 +2,7 @@
   <!--Card-->
         <div class="card" >
             <h5 class="card-title">{{ video.title }}</h5>
-            <span class="views">views:{{ video.views }}</span>
+            <span class="views">{{ video.duration }}</span>
             <router-link :to="{ name: 'single.video', params: {videoId: video.id } }" class="text-decoration-none text-dark ">
                 <img :src="video.imageUrl" alt="">
                 <!-- <video class="img-fluid" playsinline autoplay muted loop>

@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\VideoResource;
 use App\Http\Requests\VideoRequest;
 use App\Models\Video;
-use DateTime;
 
 class VideoController extends Controller
 {
@@ -34,13 +33,13 @@ class VideoController extends Controller
                 case "alltime":
                     return Video::paginate(
                         $perPage = 60,
-                        $columns = ['id','title','imageUrl','views','likes'],
+                        $columns = ['id','title','imageUrl','duration','likes'],
                     );
             }
         };
             return $video->paginate(
                 $perPage = 60,
-                $columns = ['id','title','imageUrl','views','likes'],
+                $columns = ['id','title','imageUrl','duration','likes'],
             );
     }
 

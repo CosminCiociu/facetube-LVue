@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Video extends Model
+class Category extends Model
 {
-    protected $table = "video";
+    use HasFactory;
+
+    protected $table = "categories";
 
     use HasFactory;
 
@@ -19,18 +21,13 @@ class Video extends Model
     protected $fillable = [
         'title',
         'imageUrl',
-        'videoUrl',
-        'duration',
-        'dateCreated',
-        'likes',
-        'views'
     ];
 
     /**
-     * Get category for the video.
+     * Get videos for category.
      */
-    public function category()
+    public function videos()
     {
-        return $this->belongsTo(Category::class)->select(['id', 'title']);
+        return $this->hasMany(Video::class,'category_id')->select(['id', 'title']);
     }
 }
