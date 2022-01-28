@@ -19,7 +19,11 @@ Route::get('/', function () {
 
 Route::get('/{videoId}', function () {
     return view('singleVideo');
-})->name('single.video');;
+})->name('single.video');
+
+Route::get('/categories', function () {
+    return view('videos');
+})->name('categories');
 
 
 Route::get('admin/videos', function () {

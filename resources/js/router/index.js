@@ -6,6 +6,7 @@ import VideosIndex from '../components/videos/VideosIndex'
 import VideosCreate from '../components/videos/VideosCreate'
 import VideosEdit from '../components/videos/VideosEdit'
 import SingleVideo from '../components/frontpage/SingleVideo'
+import CategoriesIndex from '../components/categories/CategoriesIndex'
 
 const routes = [
     {
@@ -18,6 +19,11 @@ const routes = [
         name: 'single.video',
         component: SingleVideo,
         props: true
+    },
+    {
+        path: '/categories',
+        name: 'categories',
+        component: CategoriesIndex
     },
     {
         path: '/admin/videos',

@@ -1,13 +1,14 @@
 <template>
   <!--Card-->
         <div class="card" >
-            <h5 class="card-title">{{ video.title }}</h5>
-            <span class="views">{{ video.duration }}</span>
             <router-link :to="{ name: 'single.video', params: {videoId: video.id } }" class="text-decoration-none text-dark ">
-                <img :src="video.imageUrl" alt="">
-                <!-- <video class="img-fluid" playsinline autoplay muted loop>
-                    <source :src="video.videoUrl" type="video/mp4">
-                </video> -->
+                <div class="image-video-container">
+                    <img :src="video.imageUrl" alt="">
+                    <span class="duration">{{ video.duration }}</span>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ video.title }}</h5>
+                </div>
             </router-link>
         </div>
 </template>
@@ -20,73 +21,46 @@ export default {
 }
 </script>
 
-<style>
-
-.card:hover {
-    transform: scale(1.1);
-}
-
-.card-title {
-    width: 100%;
-    z-index: 3;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%,0);
-    text-align: center;
-    color: #fafafa;
-}
-.card a {
-    height: 100%;
-}
-video,
-img {
-  object-fit: fill;
-  width: 100%;
-  height: 100%;
-}
-.card:hover img{
-    display: none;
-}
-.card:hover .card-title {
-    animation: mymove 0.5s linear forwards;
-}
-@keyframes mymove {
-  from {
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%,0);
-    opacity: 1;
+<style scoped>
+    .image-video-container{
+        position: relative;
     }
-  to {
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%,100%);
-    opacity: 0;
+    .duration {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        /* padding: 5px; */
+        font-size: 11px;
+        font-weight: bold;
+        line-height: 18px;
+        padding: 0 6px;
+        vertical-align: middle;
+        background: #000;
+        background: rgba(0,0,0,.7);
+        color: #fff !important;
+        border-radius: 10px 0 0 10px;
     }
-}
-.card img{
-    position: absolute;
-    z-index: 2;
-    top: 0;
-    left: 0;
-}
-.views {
-    z-index: 3;
-    position: absolute;
-    bottom: 0;
-    left: 100%;
-    transform: translate(-100%,0);
-    color: #fafafa;
-    white-space: nowrap;
-    font-size: 12px;
-    line-height: 18px;
-    display: inline-block;
-    padding: 0px 8px;
-    vertical-align: middle;
-    border-radius: 10%;
-    background: #000;
-    background: rgba(0,0,0,.7);
-}
-
+    .card {
+        background-color: transparent;
+        border: 0;
+        /* border-radius: 5px; */
+        /* box-shadow: 0 4px 10px 0 rgb(40 49 53 / 20%);  */
+        overflow: hidden;
+        margin-top: 10px;
+        position: relative;
+        /* -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); */
+        /* -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); */
+    }
+    .card:hover {
+        opacity: 0.9;
+        transition: all 0.2s ease-out;
+        box-shadow: 4px 0 8px #8c8c8c;
+        top: -4px;
+        border: 0;
+        /* background-color: white; */
+    }
+    .card-body {
+        border-radius: 10px 0 0 10px;
+        padding: 0.5rem 0.5rem 0 0;
+    }
 </style>
