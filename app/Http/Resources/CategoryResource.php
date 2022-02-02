@@ -18,7 +18,7 @@ class CategoryResource extends JsonResource
             'id'            => $this->id,
             'title'         => $this->title,
             'imageUrl'      => $this->imageUrl,
-            'videos'        => $this->videos,
+            'videoNo'        => count($this->videos),
             'created_at'    => $this->created_at,
             'updated_at'    => $this->updated_at,
         ];

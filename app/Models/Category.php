@@ -28,6 +28,7 @@ class Category extends Model
      */
     public function videos()
     {
-        return $this->hasMany(Video::class,'category_id')->select(['id', 'title']);
+        return $this->hasMany(Video::class,'category_id');
+        // ->select(['id', 'title']);
     }
 }

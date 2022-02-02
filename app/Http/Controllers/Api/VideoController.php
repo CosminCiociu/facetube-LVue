@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\VideoResource;
 use App\Http\Requests\VideoRequest;
+use App\Models\Category;
 use App\Models\Video;
 
 class VideoController extends Controller
@@ -95,5 +96,18 @@ class VideoController extends Controller
 
         return response()->noContent();
 
+    }
+
+    public function getVideosBySearch(Request $request)
+    {
+        $data = Video::where('title', 'LIKE','%'.$request->keyword.'%')->select('id','title')->limit(3)->get();
+        return response()->json($data); 
+    }
+
+    public function getVideosForSearchPage(Request $request)
+    {
+        $videos = Video::where('title', 'LIKE','%'.$request->keyword.'%')->take(10)->get();
+        $categories = Category::where('title', 'LIKE','%'.$request->keyword.'%')->take(20)->get();
+        return response()->json(['videos' => $videos,'categories' => $categories]); 
     }
 }

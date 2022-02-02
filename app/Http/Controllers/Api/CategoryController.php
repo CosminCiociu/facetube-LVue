@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Http\Resources\CategoryResource;
 use App\Models\Category;
+use App\Models\Video;
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -38,11 +40,36 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Request $request, Category $category)
     {
-        return new CategoryResource($category);
-    }
+        if($request->input('date')){
+            switch ($request -> input('date')) {
+                case "today":
+                    $videos = Video::where('category_id','=',$category->id)->whereDate('dateCreated', '>' , date("Y-m-d", strtotime("-1 days")));
+                    break;
 
+                case "week":
+                    $videos = Video::where('category_id','=',$category->id)->whereDate('dateCreated', '>' , date("Y-m-d", strtotime("-1 weeks")));
+                    break;
+
+                case "mounth":
+                    $videos = Video::where('category_id','=',$category->id)->whereDate('dateCreated', '>' , date("Y-m-d", strtotime("-1 mounths")));
+                    break;
+                case "alltime":
+                    return Video::where('category_id','=',$category->id)->paginate(
+                        $perPage = 60,
+                        $columns = ['id','title','imageUrl','duration','likes'],
+                    );
+            }
+
+            return $videos->paginate(
+                $perPage = 60,
+                $columns = ['id','title','imageUrl','duration','likes'],
+            );
+        }
+    }   
+
+    
     /**
      * Update the specified resource in storage.
      *

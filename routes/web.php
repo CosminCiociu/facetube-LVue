@@ -14,34 +14,42 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('videos');
+    return view('default');
 })->name('home');
 
-Route::get('/{videoId}', function () {
-    return view('singleVideo');
+Route::get('video/{videoId}', function () {
+    return view('default');
 })->name('single.video');
 
 Route::get('/categories', function () {
-    return view('videos');
+    return view('default');
 })->name('categories');
 
+Route::get('/category/{categoryId}', function () {
+    return view('default');
+})->name('specific.category');
 
 Route::get('admin/videos', function () {
-    return view('videos');
+    return view('default');
 })
 // ->middleware(['auth'])
 ->name('videos');
 
 Route::get('admin/videos/create', function () {
-    return view('videos');
+    return view('default');
 })
 // ->middleware(['auth'])
 ->name('videos.create');
 
 Route::get('admin/videos/{id}/edit', function () {
-    return view('videos');
+    return view('default');
 })
 // ->middleware(['auth'])
 ->name('videos.edit');
+
+Route::get('/search', function () {
+    return view('default');
+})->name('search');
+
 
 require __DIR__.'/auth.php';

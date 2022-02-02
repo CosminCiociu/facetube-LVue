@@ -29,7 +29,7 @@ export default {
 	.container-filters {
 		display: flex;
 		align-items: center;
-		justify-content: flex-end;
+		/* justify-content: flex-end; */
 	}
 	.filer-views {
 		padding-right: 5px;

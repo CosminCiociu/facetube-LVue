@@ -8,6 +8,7 @@ export default function useCompanies() {
     const router = useRouter()
     const errors = ref('')
     const infoPaginate = ref({})
+    const categories = ref([])
 
     const getVideos = async (page = 1,dateValue = 'mounth') => {
         let response = 
@@ -55,10 +56,31 @@ export default function useCompanies() {
         await axios.delete('/api/videos/' + id)
     }
 
+    const getVideosByCategory = async (categoryId,page = 1,dateValue = 'alltime') => {
+        let response = 
+        await axios.get(`/api/categories/${categoryId}/?page=${page}&date=${dateValue}`)
+
+        videos.value = response.data.data;
+        
+        infoPaginate.value = {
+            current: response.data.current_page,
+            last_page: response.data.last_page,
+            per_page: response.data.per_page,
+        }
+    }
+
+    const getVideosBySearch = async (keyword) => {
+        let response = 
+        await axios.get(`/api/search?keyword=${keyword}`)
+        videos.value = response.data.videos;
+        categories.value = response.data.categories;
+        
+    }
 
     return {
         videos,
         video,
+        categories,
         errors,
         infoPaginate,
         getVideos,
@@ -66,5 +88,7 @@ export default function useCompanies() {
         storeVideo,
         updateVideo,
         destroyVideo,
+        getVideosByCategory,
+        getVideosBySearch,
     }
 }

@@ -7,6 +7,8 @@ import VideosCreate from '../components/videos/VideosCreate'
 import VideosEdit from '../components/videos/VideosEdit'
 import SingleVideo from '../components/frontpage/SingleVideo'
 import CategoriesIndex from '../components/categories/CategoriesIndex'
+import CategorySpecific from '../components/categories/CategorySpecific'
+import SearchIndex from '../components/utilities/SearchIndex'
 
 const routes = [
     {
@@ -15,15 +17,26 @@ const routes = [
         component: FrontpageIndex
     },
     {
-        path: '/:videoId/',
+        path: '/video/:videoId/',
         name: 'single.video',
         component: SingleVideo,
+        props: true
+    },
+    {
+        path: '/search',
+        name: 'search-results',
+        component: SearchIndex,
         props: true
     },
     {
         path: '/categories',
         name: 'categories',
         component: CategoriesIndex
+    },
+    {
+        path: '/category/:categoryId/',
+        name: 'single.category',
+        component: CategorySpecific
     },
     {
         path: '/admin/videos',
