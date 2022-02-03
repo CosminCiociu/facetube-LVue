@@ -110,4 +110,12 @@ class VideoController extends Controller
         $categories = Category::where('title', 'LIKE','%'.$request->keyword.'%')->take(20)->get();
         return response()->json(['videos' => $videos,'categories' => $categories]); 
     }
+
+    public function getRelatedVideosByCategory(Request $request)
+    {
+        if($request->categoryId){
+            $videos = Video::where('category_id', '=', $request->categoryId)->inRandomOrder()->limit(12)->get();
+        }
+        return $videos; 
+    }
 }

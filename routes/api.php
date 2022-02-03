@@ -24,3 +24,4 @@ Route::apiResource('videos', \App\Http\Controllers\Api\VideoController::class);
 Route::apiResource('categories', \App\Http\Controllers\Api\CategoryController::class);
 Route::get('/livesearch', [ \App\Http\Controllers\Api\VideoController::class, 'getVideosBySearch']);
 Route::get('/search', [ \App\Http\Controllers\Api\VideoController::class, 'getVideosForSearchPage']);
+Route::get('/related-videos', [ \App\Http\Controllers\Api\VideoController::class, 'getRelatedVideosByCategory']);

@@ -1,8 +1,12 @@
 
 <template>
     <div class="video-wrapper">
-        <single-video-item :video="video" />
-        <related-to-video />
+        <div class="padding-12">
+            <single-video-item :video="video" />
+            <related-to-video :video="video" />
+        </div>
+        
+        <related-videos v-if="video.category_id" :videoId="video.category_id" />
     </div>
     
 </template>
@@ -11,6 +15,7 @@ import useVideos from "../../composables/videos";
 import { onMounted } from "vue";
 import SingleVideoItem from "./SingleVideoItem"
 import RelatedToVideo from "./RelatedToVideo"
+import RelatedVideos from "./RelatedVideos"
 
 export default {
     props: {
@@ -21,7 +26,8 @@ export default {
     },
     components: {
         SingleVideoItem,
-        RelatedToVideo     
+        RelatedToVideo,
+        RelatedVideos   
     },
     setup(props) {
         const { errors, video, getVideo } = useVideos()
@@ -36,5 +42,7 @@ export default {
 }
 </script>
 <style scoped>
-
+.padding-12 {
+    padding: 0 12px;
+}
 </style>

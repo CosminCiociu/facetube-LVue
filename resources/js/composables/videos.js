@@ -77,6 +77,16 @@ export default function useCompanies() {
         
     }
 
+    const getRelatedVideosByCategory = async (categoryId,append=false) => {
+        let response = 
+        await axios.get(`/api/related-videos?categoryId=${categoryId}`)
+        if(append) {
+            videos.value = [...videos.value, ...response.data]
+        }else {
+            videos.value = response.data;
+        }
+    }
+
     return {
         videos,
         video,
@@ -90,5 +100,6 @@ export default function useCompanies() {
         destroyVideo,
         getVideosByCategory,
         getVideosBySearch,
+        getRelatedVideosByCategory
     }
 }
