@@ -18,11 +18,11 @@ class CreateVideoTable extends Migration
             $table->string('title');
             $table->string('imageUrl');
             $table->string('videoUrl');
-            $table->dateTime('dateCreated');
-            $table->integer('views');
+            $table->dateTime('dateCreated')->useCurrent();
+            $table->integer('views')->nullable();
             $table->string('duration');
-            $table->integer('likes');
-            $table->integer('category_id');
+            $table->integer('likes')->nullable();
+            $table->integer('category_id')->nullable();
             $table->timestamps();
         });
     }

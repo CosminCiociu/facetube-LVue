@@ -29,13 +29,13 @@ class VideoController extends Controller
                     break;
 
                 case "mounth":
-                    $video = Video::whereDate('dateCreated', '>' , date("Y-m-d", strtotime("-1 mounths")));
+                    $video = Video::whereDate('dateCreated', '>' , date("Y-m-d", strtotime("-1 mounths")))->orderBy('id', 'DESC');
                     break;
                 case "alltime":
                     return Video::paginate(
                         $perPage = 60,
                         $columns = ['id','title','imageUrl','duration','likes'],
-                    );
+                    )->orderBy('id', 'DESC');
             }
         };
             return $video->paginate(
