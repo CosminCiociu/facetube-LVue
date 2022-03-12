@@ -8,6 +8,7 @@ use App\Http\Resources\VideoResource;
 use App\Http\Requests\VideoRequest;
 use App\Models\Category;
 use App\Models\Video;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class VideoController extends Controller
 {
@@ -21,15 +22,15 @@ class VideoController extends Controller
         if($request->input('date')){
             switch ($request -> input('date')) {
                 case "today":
-                    $video = Video::whereDate('dateCreated', '>' , date("Y-m-d", strtotime("-1 days")));
+                    $video = Video::whereDate('created_at', '>' , date("Y-m-d", strtotime("-1 days")));
                     break;
 
                 case "week":
-                    $video = Video::whereDate('dateCreated', '>' , date("Y-m-d", strtotime("-1 weeks")));
+                    $video = Video::whereDate('created_at', '>' , date("Y-m-d", strtotime("-1 weeks")));
                     break;
 
                 case "mounth":
-                    $video = Video::whereDate('dateCreated', '>' , date("Y-m-d", strtotime("-1 mounths")));
+                    $video = Video::whereDate('created_at', '>' , date("Y-m-d", strtotime("-1 mounths")));
                     break;
                 case "alltime":
                     return Video::paginate(
@@ -37,11 +38,18 @@ class VideoController extends Controller
                         $columns = ['id','title','imageUrl','duration','likes'],
                     );
             }
-        };
-            return $video->paginate(
+        } else {
+            $video = Video::whereDate('created_at', '>' , date("Y-m-d", strtotime("-1 mounths")))->paginate(
                 $perPage = 60,
                 $columns = ['id','title','imageUrl','duration','likes'],
             );
+            return $this->filterImages($video);
+        }
+            $video = $video->paginate(
+                $perPage = 60,
+                $columns = ['id','title','imageUrl','duration','likes'],
+            );
+            return $this->filterImages($video);
     }
 
     /**
@@ -52,9 +60,14 @@ class VideoController extends Controller
      */
     public function store(VideoRequest $request)
     {
-        $video = Video::create($request->validated());
+        $video = Video::where('videoUrl', '=' ,$request->input('videoUrl'))->exists();
+        if($video) {
+            return new JsonResponse('Already in db',JsonResponse::HTTP_OK);
+        }
 
-        return new VideoResource($video);
+        $video = Video::create($request->all());
+
+        return new JsonResponse('Stored',JsonResponse::HTTP_OK);
 
     }
 
@@ -117,5 +130,14 @@ class VideoController extends Controller
             $videos = Video::where('category_id', '=', $request->categoryId)->inRandomOrder()->limit(12)->get();
         }
         return $videos; 
+    }
+
+    private function filterImages($videos) {
+        foreach($videos as $video) {
+            if(!filter_var($video['imageUrl'], FILTER_VALIDATE_URL)) {
+               $video['imageUrl'] = public_path('storage/images-videos/') . $video['folderName'] . '/' . $video['imageUrl'] . '.jpeg';
+            }
+        }
+        return $videos ;
     }
 }

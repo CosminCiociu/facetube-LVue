@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 // Route::apiResource('companies', \App\Http\Controllers\Api\CompanyController::class);
 Route::apiResource('videos', \App\Http\Controllers\Api\VideoController::class);

@@ -24,12 +24,12 @@ class VideoRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'     => ['required', 'string'],
-            'imageUrl'  => ['required', 'url'],
-            'videoUrl'  => ['required', 'url'],
-            'duration'  => ['required', 'string'],
-            'views'     => ['integer'],
-            'likes'     => ['integer'],
+            // 'title'     => ['required', 'string'],
+            // 'imageUrl'  => ['required', 'url'],
+            // 'videoUrl'  => ['required', 'url'],
+            // 'duration'  => ['required', 'string'],
+            // 'views'     => ['integer'],
+            // 'likes'     => ['integer'],
         ];
     }
 }
