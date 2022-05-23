@@ -54,7 +54,8 @@ export default {
         next() {
             this.infoPaginate.current++
             this.getVideos(this.infoPaginate.current,this.dateSelect)
-        }
+        },
+        
     }
 }   
 </script>

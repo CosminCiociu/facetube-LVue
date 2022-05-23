@@ -28,7 +28,8 @@ export default {
     },
     setup(props) {
         const { errors, videos, getRelatedVideosByCategory } = useVideos()
-        onMounted(getRelatedVideosByCategory(props.videoId))
+        const random = Math.floor(Math.random() * props.videoId.length);
+        onMounted(getRelatedVideosByCategory(props.videoId[random].id))
 
         return {
             errors,
@@ -39,7 +40,8 @@ export default {
     methods :{
         showMore(e) {
             e.target.style.display = 'none';
-            this.getRelatedVideosByCategory(this.$props.videoId,true);
+            const random = Math.floor(Math.random() * this.$props.videoId.length);
+            this.getRelatedVideosByCategory(this.$props.videoId[random].id,true);
         }
     }
 }

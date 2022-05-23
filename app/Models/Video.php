@@ -33,4 +33,8 @@ class Video extends Model
     {
         return $this->belongsTo(Category::class)->select(['id', 'title']);
     }
+
+    public function categories(){
+        return $this->belongsToMany(Category::class, 'category_video');
+    }
 }

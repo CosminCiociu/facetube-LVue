@@ -3,7 +3,7 @@
         <div class="card" >
             <router-link :to="{ name: 'single.category', params: {categoryId: category.id } }" class="text-decoration-none text-dark ">
                 <div class="image-category-container">
-                    <img :src="category.imageUrl" alt="">
+                    <img class="test-img" :src="category.imageUrl" alt="">
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">{{ category.title }}</h5>
@@ -22,23 +22,15 @@ export default {
 </script>
 
 <style scoped>
+    .test-img {
+        width: 100%;
+        height: 15vw !important;
+        object-fit: fill;
+        max-width: 100%;
+        /* object-position: bottom; */
+     }  
     .image-category-container{
         position: relative;
-    }
-    .duration {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        /* padding: 5px; */
-        font-size: 11px;
-        font-weight: bold;
-        line-height: 18px;
-        padding: 0 6px;
-        vertical-align: middle;
-        background: #000;
-        background: rgba(0,0,0,.7);
-        color: #fff !important;
-        border-radius: 10px 0 0 10px;
     }
     .card {
         background-color: transparent;
@@ -61,6 +53,10 @@ export default {
     }
     .card-body {
         display: flex;
+        border-radius: 10px 0 0 10px;
+        padding: 0.5rem 0.5rem 0 0;
+    }
+    .card-body {
         border-radius: 10px 0 0 10px;
         padding: 0.5rem 0.5rem 0 0;
     }

@@ -26392,7 +26392,8 @@ __webpack_require__.r(__webpack_exports__);
         videos = _useVideos.videos,
         getRelatedVideosByCategory = _useVideos.getRelatedVideosByCategory;
 
-    (0,vue__WEBPACK_IMPORTED_MODULE_1__.onMounted)(getRelatedVideosByCategory(props.videoId));
+    var random = Math.floor(Math.random() * props.videoId.length);
+    (0,vue__WEBPACK_IMPORTED_MODULE_1__.onMounted)(getRelatedVideosByCategory(props.videoId[random].id));
     return {
       errors: errors,
       videos: videos,
@@ -26402,7 +26403,8 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     showMore: function showMore(e) {
       e.target.style.display = 'none';
-      this.getRelatedVideosByCategory(this.$props.videoId, true);
+      var random = Math.floor(Math.random() * this.$props.videoId.length);
+      this.getRelatedVideosByCategory(this.$props.videoId[random].id, true);
     }
   }
 });
@@ -26645,6 +26647,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     video: Object
+  },
+  methods: {
+    truncate: function truncate(text, length, suffix) {
+      if (text.length > length) {
+        return text.substring(0, length) + suffix;
+      } else {
+        return text;
+      }
+    }
   }
 });
 
@@ -27022,6 +27033,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+        "class": "test-img",
         src: $props.category.imageUrl,
         alt: ""
       }, null, 8
@@ -27344,11 +27356,14 @@ var _hoisted_1 = {
 var _hoisted_2 = {
   "class": "flexible-container"
 };
-var _hoisted_3 = ["src"];
+var _hoisted_3 = {
+  "class": "fluid_video_wrapper fluid_player_layout_default"
+};
+var _hoisted_4 = ["src"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("main", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.video.title), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("iframe", {
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("iframe", {
     src: $props.video.videoUrl,
     width: "448",
     height: "252",
@@ -27358,7 +27373,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     allowFullScreen: ""
   }, null, 8
   /* PROPS */
-  , _hoisted_3)])]);
+  , _hoisted_4)])])]);
 }
 
 /***/ }),
@@ -27796,7 +27811,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* PROPS */
       , _hoisted_3), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.video.duration), 1
       /* TEXT */
-      )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.video.title), 1
+      )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.truncate($props.video.title, 35, " ...")), 1
       /* TEXT */
       )])];
     }),
@@ -34052,7 +34067,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".heart[data-v-2135e837] {\n  width: 50px;\n  height: 50px;\n  background: url(\"https://cssanimation.rocks/images/posts/steps/heart.png\") no-repeat;\n  background-position: -25px -25px;\n  cursor: pointer;\n  transition: background-position 1s steps(28);\n  transition-duration: 0s;\n  transform: scale(0.7);\n}\n.heart.active[data-v-2135e837] {\n  transition-duration: 1s;\n  background-position: -2825px -25px;\n}\n.views-container[data-v-2135e837] {\n  margin-left: auto;\n  margin-right: 3rem;\n}\n.like-container[data-v-2135e837] {\n  display: flex;\n  align-items: center;\n  height: 50px;\n  background: black;\n  border-radius: 0px 0px 10px 10px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".heart[data-v-2135e837] {\n  width: 50px;\n  height: 50px;\n  background: url(\"https://cssanimation.rocks/images/posts/steps/heart.png\") no-repeat;\n  background-position: -25px -25px;\n  cursor: pointer;\n  transition: background-position 1s steps(28);\n  transition-duration: 0s;\n  transform: scale(0.7);\n}\n.heart.active[data-v-2135e837] {\n  transition-duration: 1s;\n  background-position: -2825px -25px;\n}\n.views-container[data-v-2135e837] {\n  margin-left: auto;\n  margin-right: 3rem;\n}\n.like-container[data-v-2135e837] {\n  max-width: 1341px;\n  display: flex;\n  align-items: center;\n  height: 50px;\n  background: black;\n  border-radius: 0px 0px 10px 10px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -34100,7 +34115,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.image-category-container[data-v-c671802e]{\r\n        position: relative;\n}\n.duration[data-v-c671802e] {\r\n        position: absolute;\r\n        bottom: 0;\r\n        right: 0;\r\n        /* padding: 5px; */\r\n        font-size: 11px;\r\n        font-weight: bold;\r\n        line-height: 18px;\r\n        padding: 0 6px;\r\n        vertical-align: middle;\r\n        background: #000;\r\n        background: rgba(0,0,0,.7);\r\n        color: #fff !important;\r\n        border-radius: 10px 0 0 10px;\n}\n.card[data-v-c671802e] {\r\n        background-color: transparent;\r\n        border: 0;\r\n        /* border-radius: 5px; */\r\n        /* box-shadow: 0 4px 10px 0 rgb(40 49 53 / 20%);  */\r\n        overflow: hidden;\r\n        margin-top: 10px;\r\n        position: relative;\r\n        /* -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); */\r\n        /* -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); */\n}\n.card[data-v-c671802e]:hover {\r\n        opacity: 0.9;\r\n        transition: all 0.2s ease-out;\r\n        box-shadow: 4px 0 8px #8c8c8c;\r\n        top: -4px;\r\n        border: 0;\r\n        /* background-color: white; */\n}\n.card-body[data-v-c671802e] {\r\n        display: flex;\r\n        border-radius: 10px 0 0 10px;\r\n        padding: 0.5rem 0.5rem 0 0;\n}\n.video-no[data-v-c671802e] {\r\n        padding-left: 5px;\r\n        opacity: 0.7;\r\n        font-size: 14px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.test-img[data-v-c671802e] {\r\n        width: 100%;\r\n        height: 15vw !important;\r\n        -o-object-fit: fill;\r\n           object-fit: fill;\r\n        max-width: 100%;\r\n        /* object-position: bottom; */\n}\n.image-category-container[data-v-c671802e]{\r\n        position: relative;\n}\n.card[data-v-c671802e] {\r\n        background-color: transparent;\r\n        border: 0;\r\n        /* border-radius: 5px; */\r\n        /* box-shadow: 0 4px 10px 0 rgb(40 49 53 / 20%);  */\r\n        overflow: hidden;\r\n        margin-top: 10px;\r\n        position: relative;\r\n        /* -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); */\r\n        /* -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); */\n}\n.card[data-v-c671802e]:hover {\r\n        opacity: 0.9;\r\n        transition: all 0.2s ease-out;\r\n        box-shadow: 4px 0 8px #8c8c8c;\r\n        top: -4px;\r\n        border: 0;\r\n        /* background-color: white; */\n}\n.card-body[data-v-c671802e] {\r\n        display: flex;\r\n        border-radius: 10px 0 0 10px;\r\n        padding: 0.5rem 0.5rem 0 0;\n}\n.card-body[data-v-c671802e] {\r\n        border-radius: 10px 0 0 10px;\r\n        padding: 0.5rem 0.5rem 0 0;\n}\n.video-no[data-v-c671802e] {\r\n        padding-left: 5px;\r\n        opacity: 0.7;\r\n        font-size: 14px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -34148,7 +34163,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.padding-12[data-v-bbfa9b3e] {\r\n    padding: 0 12px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.padding-12[data-v-bbfa9b3e] {\r\n    padding: 0 12px;\r\n    max-width: 1500px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -34172,7 +34187,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\r\n/* Flexible iFrame */\n.flexible-container[data-v-12ddc394] {\r\n  position: relative;\r\n  width: 100%;\r\n  height: 0;\r\n  padding-bottom: 56.25%;\n}\n.flexible-container iframe[data-v-12ddc394],\r\n.flexible-container object[data-v-12ddc394],\r\n.flexible-container embed[data-v-12ddc394] {\r\n  position: absolute;\r\n  /* top: 0; */\r\n  /* left: 0; */\r\n  width: 100%;\r\n  height: 100%;\r\n  /* object-fit: contain; */\n}\nmain[data-v-12ddc394] {\r\n    width: 100%;\r\n    /* padding: 2em;  */\r\n    /* background: #fff; */\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\r\n/* Flexible iFrame */\n.flexible-container[data-v-12ddc394] {\r\n  position: relative;\r\n  width: 100%;\r\n  height: 0;\r\n  padding-bottom: 56.25%;\n}\n.fluid_video_wrapper[data-v-12ddc394] {\r\n    max-width: 100%;\r\n    display: inline-block;\r\n    box-sizing: content-box;\n}\n.flexible-container iframe[data-v-12ddc394],\r\n.flexible-container object[data-v-12ddc394],\r\n.flexible-container embed[data-v-12ddc394] {\r\n  position: absolute;\r\n  /* top: 0; */\r\n  /* left: 0; */\r\n  width: 100%;\r\n  height: 100%;\r\n  /* object-fit: contain; */\n}\n.flexible-container iframe[data-v-12ddc394] {\r\n    height: 100%;\n}\nmain[data-v-12ddc394] {\r\n    width: 100%;\r\n    max-width: 1341px;\r\n    /* padding: 2em;  */\r\n    /* background: #fff; */\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -34268,7 +34283,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.image-video-container[data-v-0b8c4a3c]{\r\n        position: relative;\n}\n.duration[data-v-0b8c4a3c] {\r\n        position: absolute;\r\n        bottom: 0;\r\n        right: 0;\r\n        /* padding: 5px; */\r\n        font-size: 11px;\r\n        font-weight: bold;\r\n        line-height: 18px;\r\n        padding: 0 6px;\r\n        vertical-align: middle;\r\n        background: #000;\r\n        background: rgba(0,0,0,.7);\r\n        color: #fff !important;\r\n        border-radius: 10px 0 0 10px;\n}\n.card[data-v-0b8c4a3c] {\r\n        background-color: transparent;\r\n        border: 0;\r\n        /* border-radius: 5px; */\r\n        /* box-shadow: 0 4px 10px 0 rgb(40 49 53 / 20%);  */\r\n        overflow: hidden;\r\n        margin-top: 10px;\r\n        position: relative;\r\n        /* -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); */\r\n        /* -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); */\n}\n.card[data-v-0b8c4a3c]:hover {\r\n        opacity: 0.9;\r\n        transition: all 0.2s ease-out;\r\n        box-shadow: 4px 0 8px #8c8c8c;\r\n        top: -4px;\r\n        border: 0;\r\n        /* background-color: white; */\n}\n.card-body[data-v-0b8c4a3c] {\r\n        border-radius: 10px 0 0 10px;\r\n        padding: 0.5rem 0.5rem 0 0;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.image-video-container[data-v-0b8c4a3c]{\r\n        position: relative;\n}\n.image-video-container > img[data-v-0b8c4a3c] {\r\n        max-height: 500px;\n}\n.duration[data-v-0b8c4a3c] {\r\n        position: absolute;\r\n        bottom: 0;\r\n        right: 0;\r\n        /* padding: 5px; */\r\n        font-size: 11px;\r\n        font-weight: bold;\r\n        line-height: 18px;\r\n        padding: 0 6px;\r\n        vertical-align: middle;\r\n        background: #000;\r\n        background: rgba(0,0,0,.7);\r\n        color: #fff !important;\r\n        border-radius: 10px 0 0 10px;\n}\n.card[data-v-0b8c4a3c] {\r\n        background-color: transparent;\r\n        border: 0;\r\n        /* border-radius: 5px; */\r\n        /* box-shadow: 0 4px 10px 0 rgb(40 49 53 / 20%);  */\r\n        overflow: hidden;\r\n        margin-top: 10px;\r\n        position: relative;\r\n        /* -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); */\r\n        /* -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); */\n}\n.card[data-v-0b8c4a3c]:hover {\r\n        opacity: 0.9;\r\n        transition: all 0.2s ease-out;\r\n        box-shadow: 4px 0 8px #8c8c8c;\r\n        top: -4px;\r\n        border: 0;\r\n        /* background-color: white; */\n}\n.card-body[data-v-0b8c4a3c] {\r\n        border-radius: 10px 0 0 10px;\r\n        padding: 0.5rem 0.5rem 0 0;\n}\n.card-title[data-v-0b8c4a3c]{\r\n        text-align: center;\r\n        font-size: 14px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

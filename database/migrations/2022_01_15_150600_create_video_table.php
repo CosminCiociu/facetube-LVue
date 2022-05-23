@@ -14,7 +14,7 @@ class CreateVideoTable extends Migration
     public function up()
     {
         Schema::create('video', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('title');
             $table->string('imageUrl');
             $table->string('folderName');
@@ -22,7 +22,6 @@ class CreateVideoTable extends Migration
             $table->integer('views')->default(0);
             $table->string('duration')->nullable(true);
             $table->integer('likes')->default(0);
-            $table->integer('category_id')->default(1);
             $table->timestamps();
         });
     }

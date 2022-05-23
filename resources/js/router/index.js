@@ -14,7 +14,7 @@ const routes = [
     {
         path: '/',
         name: 'home',
-        component: FrontpageIndex
+        component: FrontpageIndex,
     },
     {
         path: '/video/:videoId/',
