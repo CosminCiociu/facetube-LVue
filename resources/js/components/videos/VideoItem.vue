@@ -7,7 +7,7 @@
                     <span class="duration">{{ video.duration }}</span>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">{{ video.title }}</h5>
+                    <h5 class="card-title">{{ truncate(video.title, 35, " ...") }}</h5>
                 </div>
             </router-link>
         </div>
@@ -17,6 +17,15 @@
 export default {
     props: {
         video: Object,
+    },
+    methods: {
+        truncate: function (text, length, suffix) {
+                if (text.length > length) {
+                    return text.substring(0, length) + suffix;
+                } else {
+                    return text;
+                }
+            },
     }
 }
 </script>
@@ -24,6 +33,9 @@ export default {
 <style scoped>
     .image-video-container{
         position: relative;
+    }
+    .image-video-container > img {
+        max-height: 500px;
     }
     .duration {
         position: absolute;
@@ -62,5 +74,9 @@ export default {
     .card-body {
         border-radius: 10px 0 0 10px;
         padding: 0.5rem 0.5rem 0 0;
+    }
+    .card-title{
+        text-align: center;
+        font-size: 14px;
     }
 </style>

@@ -13,7 +13,7 @@ class CategoryRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,8 +24,8 @@ class CategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'     => ['required', 'string'],
-            'imageUrl'  => ['required', 'url'],
+            'title'     => ['required'],
+            'imageUrl'  => ['required'],
         ];
     }
 }

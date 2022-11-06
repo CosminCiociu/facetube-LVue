@@ -31,16 +31,15 @@ class VideoSeeder extends Seeder
         ];
 
         $faker = Faker::create();
-        for ($i=0; $i < 500; $i++) { 
+        for ($i=0; $i < 50; $i++) { 
 	    	Video::create([
 	            'title' => $faker->realText(10),
 	            'imageUrl'      => $faker->imageUrl($width = 640, $height = 480),
 	            'videoUrl'      => $pubVids[array_rand($pubVids)],
 	            'views'         => $faker->numberBetween(1,1000),
-	            'dateCreated'   => $faker->dateTimeBetween('-1 years','now'),
 	            'duration'      => $faker->numerify("##:##"),
+	            'folderName'    => $faker->numerify("##:##"),
 	            'likes'         => $faker->numberBetween(1,1000),
-	            'category_id'   => $faker->numberBetween(1,10),
 	        ]);
     	}
     }

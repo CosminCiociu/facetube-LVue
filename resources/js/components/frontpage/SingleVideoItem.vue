@@ -4,13 +4,16 @@
                 <h4> {{ video.title }} </h4>
         </div>
         <div class="flexible-container ">
-            <iframe :src="video.videoUrl"  width="448" height="252" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen ></iframe>
+            <div class="fluid_video_wrapper fluid_player_layout_default">
+                <iframe :src="video.videoUrl"  width="448" height="252" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen ></iframe>
+            </div>
         </div>
     </main>
     
 </template>
 
 <script>
+
 export default {
     props: {
         video: {
@@ -30,6 +33,11 @@ export default {
   height: 0;
   padding-bottom: 56.25%;
 }
+.fluid_video_wrapper {
+    max-width: 100%;
+    display: inline-block;
+    box-sizing: content-box;
+}
 
 .flexible-container iframe,
 .flexible-container object,
@@ -41,8 +49,12 @@ export default {
   height: 100%;
   /* object-fit: contain; */
 }
+.flexible-container iframe {
+    height: 100%;
+}
 main {
     width: 100%;
+    max-width: 1341px;
     /* padding: 2em;  */
     /* background: #fff; */
 }

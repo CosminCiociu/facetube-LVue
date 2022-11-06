@@ -21,7 +21,7 @@ class Video extends Model
         'imageUrl',
         'videoUrl',
         'duration',
-        'dateCreated',
+        'folderName',
         'likes',
         'views'
     ];
@@ -32,5 +32,9 @@ class Video extends Model
     public function category()
     {
         return $this->belongsTo(Category::class)->select(['id', 'title']);
+    }
+
+    public function categories(){
+        return $this->belongsToMany(Category::class, 'category_video');
     }
 }

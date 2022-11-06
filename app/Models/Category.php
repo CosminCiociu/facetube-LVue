@@ -23,12 +23,21 @@ class Category extends Model
         'imageUrl',
     ];
 
+    // /**
+    //  * Get videos for category.
+    //  */
+    // public function videos()
+    // {
+    //     return $this->hasMany(Video::class,'category_id');
+    //     // ->select(['id', 'title']);
+    // }
+
     /**
      * Get videos for category.
      */
     public function videos()
     {
-        return $this->hasMany(Video::class,'category_id');
-        // ->select(['id', 'title']);
+        return $this->belongsToMany(Video::class);
+       
     }
 }

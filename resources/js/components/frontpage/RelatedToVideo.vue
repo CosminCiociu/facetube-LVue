@@ -68,6 +68,7 @@ export default {
     margin-right: 3rem;
 }
 .like-container {
+    max-width: 1341px;
     display: flex;
     align-items: center;
     height: 50px;

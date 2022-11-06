@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 // Route::apiResource('companies', \App\Http\Controllers\Api\CompanyController::class);
 Route::apiResource('videos', \App\Http\Controllers\Api\VideoController::class);
@@ -25,3 +25,4 @@ Route::apiResource('categories', \App\Http\Controllers\Api\CategoryController::c
 Route::get('/livesearch', [ \App\Http\Controllers\Api\VideoController::class, 'getVideosBySearch']);
 Route::get('/search', [ \App\Http\Controllers\Api\VideoController::class, 'getVideosForSearchPage']);
 Route::get('/related-videos', [ \App\Http\Controllers\Api\VideoController::class, 'getRelatedVideosByCategory']);
+Route::post('/convert-categories', [ \App\Http\Controllers\Api\CategoryController::class, 'convertNameIntoId']);

@@ -38,7 +38,7 @@ export default {
                 // Page is 1 and dataValue will be received
                 // From props
                 getVideos(1, dateValue)  
-            });
+        });
 
         return {
             videos,
@@ -55,6 +55,7 @@ export default {
             this.infoPaginate.current++
             this.getVideos(this.infoPaginate.current,this.dateSelect)
         },
+        
     }
 }   
 </script>

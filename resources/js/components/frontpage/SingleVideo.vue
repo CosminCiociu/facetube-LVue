@@ -5,7 +5,6 @@
             <single-video-item :video="video" />
             <related-to-video :video="video" />
         </div>
-        
         <related-videos v-if="video.category_id" :videoId="video.category_id" />
     </div>
     
@@ -44,5 +43,6 @@ export default {
 <style scoped>
 .padding-12 {
     padding: 0 12px;
+    max-width: 1500px;
 }
 </style>
