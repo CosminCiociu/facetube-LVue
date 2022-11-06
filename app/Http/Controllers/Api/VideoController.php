@@ -31,13 +31,13 @@ class VideoController extends Controller
                     break;
 
                 case "mounth":
-                    $video = Video::whereDate('created_at', '>' , date("Y-m-d", strtotime("-1 mounths")))->orderBy('id', 'DESC');
+                    $video = Video::whereDate('dateCreated', '>' , date("Y-m-d", strtotime("-1 mounths")))->orderBy('id', 'DESC');
+
                     break;
                 case "alltime":
                     $video = Video::paginate(
                         $perPage = 60,
-                        $columns = ['id','title','imageUrl','duration','likes', 'folderName'],
-                    );
+                        $columns = ['id','title','imageUrl','duration','likes', 'folderName']);
                     return $this->filterImages($video);
                     break;
             }
